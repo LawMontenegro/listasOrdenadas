@@ -97,23 +97,51 @@ bool lista<T>::pertenece(int clave){
 }
 
 template <class T>
-bool lista<T>::borrar(int clave){
-	nodo<T> *nuevo, *ant,*pos;
-	bool respuesta = false;
-	nuevo = new nodo <T>;
- 	nuevo->clave = clave;
-	ant=cab;
-    pos = cab->sig;
-    while(ant->clave <= nuevo->clave) {
-    	if (ant->clave == nuevo->clave) {
-    		respuesta = true;
-    		pos = nuevo->sig;
-    		ant->sig = pos;
+bool lista<T>::borrar(int num)
+{      
+  	if(cab->sig!=z)
+	  {
+  		nodo <T> *pos,*ant=NULL;
+		cab=cab->sig;
+       	pos=cab;
+		      
+		while(pos!=z && pos->info!=num)
+		{
+			ant = pos;
+			pos= pos->sig;
 		}
-		ant = ant->sig;
-	}
-	return respuesta;
-    
+		if(pos==z){
+			cout<<"El elemento no se encuentra en la lista"<<endl;
+			return false; 	
+		}
+	  	else if(ant == NULL){
+	  		cab=cab->sig;delete pos;
+	  		tam --;
+	  		return true;
+		  	}
+	 	else{
+     		ant->sig= pos->sig;
+     		delete pos;
+     		tam --;
+	  		return true;
+			}
+		}else{
+			cout<<"No hay lista"<<endl;
+		}
+		
+}
+
+
+template <class T>
+void lista<T>::recorrer()
+{
+	nodo <T> *actual;
+	actual=cab;
+	while(actual->info!=z ){
+		//cout<<actual->dato<<end;
+	actual=actual->sig;
+
+	}	
 }
 
 
