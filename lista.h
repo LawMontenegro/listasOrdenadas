@@ -28,6 +28,7 @@ class lista{
 	void insertar(int clave, T info);
 	T buscar (int clave, T *infoRet);
 	bool borrar(int clave);
+	bool pertence(int clave);
 	int len(){return tam;}			
 };
 
@@ -81,9 +82,38 @@ T lista<T>::buscar(int clave, T infoRet){
 }
 
 template <class T>
-bool borrar<T>::borrar(int clave){
-	nodo<T> *nuevo, *ant,*pos;
+bool lista<T>::pertenece(int clave){
+	nodo<T> *nuevo, *ant;
+	bool respuesta = false;
+	nuevo = new nodo<T>
+	nuevo->clave = clave;
+	while((ant->sig != NULL) && (ant->clave <= nuevo->clave)){
+		if(ant->clave == nuevo->clave) {
+			respuesta = true;
+		}
+		ant = ant->sig;
+	}
+	return respuesta;
+}
 
+template <class T>
+bool lista<T>::borrar(int clave){
+	nodo<T> *nuevo, *ant,*pos;
+	bool respuesta = false;
+	nuevo = new nodo <T>;
+ 	nuevo->clave = clave;
+	ant=cab;
+    pos = cab->sig;
+    while(ant->clave <= nuevo->clave) {
+    	if (ant->clave == nuevo->clave) {
+    		respuesta = true;
+    		pos = nuevo->sig;
+    		ant->sig = pos;
+		}
+		ant = ant->sig;
+	}
+	return respuesta;
+    
 }
 
 
