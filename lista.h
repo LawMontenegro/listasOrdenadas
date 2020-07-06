@@ -26,7 +26,8 @@ class lista{
 	
 	bool lista_vacia();
 	void insertar(int clave, T info);
-	void buscar (int clave, T *infoRet);
+	T buscar (int clave, T *infoRet);
+	bool borrar(int clave);
 	int len(){return tam;}			
 };
 
@@ -59,12 +60,31 @@ void lista <T>::insertar(int cla, T info){
 
 
 template <class T>
-void lista<T>::buscar(int clave, T *infoRet){
-	nodo<T> *aux=cab;
-	while(aux->clave < clave){
-		aux = aux->sig;
-    }
-    *infoRet = aux->info;
+T lista<T>::buscar(int clave, T infoRet){
+	nodo<T> *nuevo, *ant;
+	bool respuesta = false;
+	nuevo = new nodo<T>
+	nuevo->clave = clave;
+	nuevo->info = infoRet;
+	while((ant->sig != NULL) && (ant->clave <= nuevo->clave)){
+		if(ant->clave == nuevo->clave) {
+			respuesta = true;
+		}
+		ant = ant->sig;
+	}
+	if(respuesta == true){
+		return nuevo->info;
+	} else {
+		return false;
+	}
+    
 }
+
+template <class T>
+bool borrar<T>::borrar(int clave){
+	nodo<T> *nuevo, *ant,*pos;
+
+}
+
 
 #endif
